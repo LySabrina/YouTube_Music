@@ -2,5 +2,21 @@
   "manifest_version":3,
   "name": "YouTube Music Downloader",
   "description": "Downloads music in MP3 format based on the link the user visit",
-  "version": "1.0"
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup/home.html"
+  },
+  
+  "content_scripts":[
+    {
+        "js":["scripts/content.js"],
+        "matches": [
+          "*://*.youtube.com/*"          
+        ]
+    }
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*"          
+  ]
+
 }

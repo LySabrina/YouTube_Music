@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch API Example</title>
+</head>
+<body>
+    <button id="fetchButton">Fetch Book Details</button>
+    <div id="output"></div>
+
+    <script>
+        const fetchButton = document.getElementById('fetchButton');
+        const outputDiv = document.getElementById('output');
+
+        fetchButton.addEventListener('click', () => {
+            const apiUrl = 'http://localhost:8080/';
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Handle the response data
+                    outputDiv.textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    // Handle any errors
+                    console.error('Fetch error:', error);
+                });
+        });
+    </script>
+</body>
+</html>
